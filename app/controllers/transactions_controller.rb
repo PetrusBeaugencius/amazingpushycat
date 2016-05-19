@@ -5,7 +5,15 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    @transactions= []
+    current_user.accounts.each do |account|
+      account.credit_transactions.each do |t|
+        @transactions << t
+      end
+      account.debit_transactions.each do |t|
+        @transactions << t
+      end
+    end
   end
 
   # GET /transactions/1
@@ -29,6 +37,14 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
+        ## on debite la source
+        @transaction.source.solde -= @transaction.amount
+        @transaction.source.save
+
+        ## on credite la destination
+        @transaction.destination.solde += @transaction.amount
+        @transaction.destination.save
+
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
       else
