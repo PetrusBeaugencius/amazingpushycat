@@ -5,22 +5,10 @@
 			  <h1>Listing Transactions <small>Here are the transactions of your accounts</small></h1>
 			</div>
 
-			<%
-			   toto = {
-			  "trid1" => 10,
-			  "trid2" => 20 
-			} 
-			  titi = {}
-			  @transactions.each do |t|
-			    titi[t.source.id] = t.amount
-			  end
-
-			%>
-			<%= pie_chart titi %>
-
 			<table class="table table-striped">
 			  <thead>
 			    <tr>
+			      <th>Transaction #Id</th>
 			      <th>Source account</th>
 			      <th>Destination account</th>
 			      <th>Amount</th>
@@ -35,6 +23,7 @@
 							classValue = "error" if transaction.amount < 0
 						%>
 			      <tr class="<%= classValue %>">
+			        <td><%= transaction.id %></td>
 			        <td><%= transaction.source.long_name %></td>
 			        <td><%= transaction.destination.long_name %></td>
 			        <td><%= number_to_currency(transaction.amount, locale: :en) %></td>
@@ -48,5 +37,13 @@
 
 			<%= link_to 'New Transaction', new_transaction_path, class: "btn btn-primary pull-right" %>
 		</p>
+		<%
+		  transactions_stats = {}
+		  @transactions.each do |t|
+		    transactions_stats['#' + t.id.to_s + ' ' + t.comment] = t.amount
+		  end
+  
+		%>
+		<%= pie_chart transactions_stats %>
   </div>
 </div>
