@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Accounts</h1>
-
+<div class="legend">Here is the list of your accounts</div>
 <table>
   <thead>
     <tr>
@@ -18,8 +18,6 @@
         <td><%= account.id %></td>
         <td><%= account.solde %></td>
         <td><%= account.user.name %></td>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
         <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
