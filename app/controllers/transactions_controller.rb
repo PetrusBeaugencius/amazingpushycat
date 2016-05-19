@@ -37,6 +37,14 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
+        ## on debite la source
+        @transaction.source.solde -= @transaction.amount
+        @transaction.source.save
+
+        ## on credite la destination
+        @transaction.destination.solde += @transaction.amount
+        @transaction.destination.save
+
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
       else
