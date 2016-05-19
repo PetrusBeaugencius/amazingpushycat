@@ -9,3 +9,8 @@ Amazing Bank application with :
 - graph (HighCharts)
 - add transaction to one account to another one
 - Utilisation de BitBucket pour la gestion des sources
+
+
+Exemple d'utilisateur :
+  login : test@test.te
+  password: testtest

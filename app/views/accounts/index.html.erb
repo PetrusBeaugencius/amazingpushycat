@@ -18,7 +18,7 @@
 			    <% @accounts.each do |account| %>
 						<% 
 							classValue = "success" if account.solde > 0
-							classValue = "error" if account.solde < 0
+							classValue = "danger" if account.solde < 0
 						%>
 			      <tr class="<%= classValue %>">
 			        <td><%= account.id %></td>

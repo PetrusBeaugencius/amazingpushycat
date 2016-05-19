@@ -45,7 +45,7 @@ class TransactionsController < ApplicationController
         @transaction.destination.solde += @transaction.amount
         @transaction.destination.save
 
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
+        format.html { redirect_to transactions_path, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new }

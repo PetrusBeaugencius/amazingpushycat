@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   # GET /accounts.json
   def index
     # @accounts = Account.all
-    @accounts = Account.where(user_id: current_user.id).find_each || []
+    @accounts = current_user.accounts
   end
 
   # GET /accounts/1
@@ -31,7 +31,7 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.html { redirect_to accounts_path, notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: @account }
       else
         format.html { render :new }

@@ -20,7 +20,7 @@
 			    <% @transactions.each do |transaction| %>
 						<% 
 							classValue = "success" if transaction.amount > 0
-							classValue = "error" if transaction.amount < 0
+							classValue = "danger" if transaction.amount < 0
 						%>
 			      <tr class="<%= classValue %>">
 			        <td><%= transaction.id %></td>
