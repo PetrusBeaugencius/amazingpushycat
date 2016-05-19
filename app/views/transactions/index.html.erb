@@ -1,7 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Transactions</h1>
-
+<%
+   toto = {
+  "trid1" => 10,
+  "trid2" => 20 
+} 
+  titi = {}
+  @transactions.each do |t|
+    titi[t.source.id] = t.amount
+  end
+  
+%>
+<%= pie_chart titi %>
 <table>
   <thead>
     <tr>
