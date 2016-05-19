@@ -5,8 +5,15 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
-    #@transactions = Transaction.find(:conditions=>[source])
+    @transactions= []
+    current_user.accounts.each do |account|
+      account.credit_transactions.each do |t|
+        @transactions << t
+      end
+      account.debit_transactions.each do |t|
+        @transactions << t
+      end
+    end
   end
 
   # GET /transactions/1
