@@ -4,7 +4,7 @@
 <%
   transactions_stats = {}
   @transactions.each do |t|
-    transactions_stats[t.id.to_s + '#' + t.comment] = t.amount
+    transactions_stats['#' + t.id.to_s + ' ' + t.comment] = t.amount
   end
   
 %>
@@ -13,6 +13,7 @@
 <table>
   <thead>
     <tr>
+      <th>Transaction #Id</th>
       <th>Source account</th>
       <th>Destination account</th>
       <th>Amount</th>
@@ -23,6 +24,7 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
+        <td><%= transaction.id %></td>
         <td><%= transaction.source.long_name %></td>
         <td><%= transaction.destination.long_name %></td>
         <td><%= transaction.amount %></td>
