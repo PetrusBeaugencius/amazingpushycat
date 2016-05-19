@@ -1,0 +1,16 @@
+app-dir: /Users/fred/silca/amazingpushycat
+disk_quota: 2048
+memory: 256
+name: amazingpushycat
+env:
+  ADMIN_NAME: I am the Admin
+  ADMIN_EMAIL: admin@amazing.pushycat.com
+  ADMIN_PASSWORD: password
+  DOMAIN_NAME: amazing.pushycat.com
+  SECRET_KEY_BASE: 2cb5b38ff0ba20a3ee1df78e9c75b7da33cb9cbcdb4e252117ee2347d881d3145377cfaaeaf3ed6104ce3e98c9e5e1b90dc8aedfcdcc6e0d17f39ec9d573e1fe
+services:
+  mysql-fred:
+    label: mysql
+    plan: free
+    provider: core
+    version: 5.5

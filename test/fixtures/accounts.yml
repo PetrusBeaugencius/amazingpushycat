@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  solde: 
+  user_id: 
+
+two:
+  solde: 
+  user_id: 

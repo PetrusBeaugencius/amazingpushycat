@@ -9,6 +9,12 @@ default: &default
   pool: 5
   timeout: 5000
 
+mysql: &mysql
+  adapter: mysql
+  pool: 5
+
+
+
 development:
   <<: *default
   database: db/development.sqlite3
@@ -20,6 +26,13 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
-  <<: *default
-  database: db/production.sqlite3
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
+
+production: &mysql
+  host: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql'].first['credentials']['hostname'] rescue 'localhost' %>
+  port: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql'].first['credentials']['port'] rescue 3306 %>
+  database: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql'].first['credentials']['name'] rescue '' %>
+  username: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql'].first['credentials']['username'] rescue '' %>
+  password: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mysql'].first['credentials']['password'] rescue '' %>
