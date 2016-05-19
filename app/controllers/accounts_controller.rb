@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   # GET /accounts.json
   def index
     # @accounts = Account.all
-    @accounts = Account.find_by_user_id(current_user.id) || []
+    @accounts = Account.where(user_id: current_user.id).find_each || []
   end
 
   # GET /accounts/1
