@@ -6,6 +6,7 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @transactions = Transaction.all
+    #@transactions = Transaction.find(:conditions=>[source])
   end
 
   # GET /transactions/1

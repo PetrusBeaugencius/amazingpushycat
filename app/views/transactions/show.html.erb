@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Source:</strong>
-  <%= @transaction.source %>
+  <%= @transaction.source.long_name %>
 </p>
 
 <p>
   <strong>Destination:</strong>
-  <%= @transaction.destination %>
+  <%= @transaction.destination.long_name %>
 </p>
 
 <p>
@@ -20,5 +18,4 @@
   <%= @transaction.comment %>
 </p>
 
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %>
+<%= link_to 'Return to the list', transactions_path %>

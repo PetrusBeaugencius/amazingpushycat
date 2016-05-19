@@ -2,8 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :source, { label_method: :id, prompt: "Choose an account" } %>
-    <%= f.association :destination, { label_method: :id, prompt: "Choose an account" } %>
+    <%= f.association :source, { label_method: :long_name, prompt: "Choose an account", collection: Account.where('user_id = ?', current_user.id) } %>
+    <%= f.association :destination, { label_method: :long_name, prompt: "Choose an account" } %>
     <%= f.input :amount %>
     <%= f.input :comment %>
   </div>
