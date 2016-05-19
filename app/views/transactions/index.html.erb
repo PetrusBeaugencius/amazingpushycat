@@ -2,17 +2,13 @@
 
 <h1>Listing Transactions</h1>
 <%
-   toto = {
-  "trid1" => 10,
-  "trid2" => 20 
-} 
-  titi = {}
+  transactions_stats = {}
   @transactions.each do |t|
-    titi[t.source.id] = t.amount
+    transactions_stats[t.id.to_s + '#' + t.comment] = t.amount
   end
   
 %>
-<%= pie_chart titi %>
+<%= pie_chart transactions_stats %>
 <div class="legend">Here are the transactions of your accounts</div>
 <table>
   <thead>
