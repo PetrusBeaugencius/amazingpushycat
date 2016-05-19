@@ -1,41 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+    <p>
+			<div class="page-header">
+			  <h1>Listing Transactions <small>Here are the transactions of your accounts</small></h1>
+			</div>
 
-<h1>Listing Transactions</h1>
-<%
-   toto = {
-  "trid1" => 10,
-  "trid2" => 20 
-} 
-  titi = {}
-  @transactions.each do |t|
-    titi[t.source.id] = t.amount
-  end
-  
-%>
-<%= pie_chart titi %>
-<div class="legend">Here are the transactions of your accounts</div>
-<table>
-  <thead>
-    <tr>
-      <th>Source account</th>
-      <th>Destination account</th>
-      <th>Amount</th>
-      <th>Comment</th>
-    </tr>
-  </thead>
+			<%
+			   toto = {
+			  "trid1" => 10,
+			  "trid2" => 20 
+			} 
+			  titi = {}
+			  @transactions.each do |t|
+			    titi[t.source.id] = t.amount
+			  end
 
-  <tbody>
-    <% @transactions.each do |transaction| %>
-      <tr>
-        <td><%= transaction.source.long_name %></td>
-        <td><%= transaction.destination.long_name %></td>
-        <td><%= transaction.amount %></td>
-        <td><%= transaction.comment %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+			%>
+			<%= pie_chart titi %>
 
-<br>
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Source account</th>
+			      <th>Destination account</th>
+			      <th>Amount</th>
+			      <th>Comment</th>
+			    </tr>
+			  </thead>
 
-<%= link_to 'New Transaction', new_transaction_path %>
+			  <tbody>
+			    <% @transactions.each do |transaction| %>
+						<% 
+							classValue = "success" if transaction.amount > 0
+							classValue = "error" if transaction.amount < 0
+						%>
+			      <tr class="<%= classValue %>">
+			        <td><%= transaction.source.long_name %></td>
+			        <td><%= transaction.destination.long_name %></td>
+			        <td><%= number_to_currency(transaction.amount, locale: :en) %></td>
+			        <td><%= transaction.comment %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+
+			<br>
+
+			<%= link_to 'New Transaction', new_transaction_path, class: "btn btn-primary pull-right" %>
+		</p>
+  </div>
+</div>
