@@ -27,6 +27,10 @@
         <div class="row">
 						<%= image_tag "logo.png", :title => "CA Titres", :class => "centered" %>
         </div>
+        <div class="row centered">
+					<br/>
+						PORT: <%= ENV["VCAP_APP_PORT"] %>
+        </div>
     </footer>
   </body>
 </html>

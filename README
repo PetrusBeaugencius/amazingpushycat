@@ -4,8 +4,8 @@ Amazingpushycat
 Amazing Bank application with :
 - user creation
 - multiple account per user
-- secured with stateless session
+- secured with stateless session : vérification via le PORT dans le footer
 - list of transactions of all accounts of the user
 - graph (HighCharts)
 - add transaction to one account to another one
-- 
+- Utilisation de BitBucket pour la gestion des sources
