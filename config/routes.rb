@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  resources :transactions
-  resources :accounts
-  root to: 'visitors#index'
   devise_for :users
   resources :users
+  resources :transactions
+  resources :accounts
+
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'accounts#index'
+    end
+    unauthenticated :user do
+      root :to => 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 end
