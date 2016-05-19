@@ -1,7 +1,7 @@
 app-dir: /Users/fred/silca/amazingpushycat
 disk_quota: 2048
 memory: 256
-name: amazingpushycat
+name: bankApp8
 env:
   ADMIN_NAME: I am the Admin
   ADMIN_EMAIL: admin@amazing.pushycat.com
